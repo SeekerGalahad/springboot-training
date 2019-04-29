@@ -18,7 +18,7 @@
 
     <link rel="stylesheet" href="/static/assets/css/toastr.css" type="text/css">
 
-    <title>好房网</title>
+    <title>Acger</title>
 </head>
 </#macro>
 
@@ -32,7 +32,7 @@
                         <div class="col-md-6 col-sm-6">
                             <article>
                                 <h3>关于我们</h3>
-                                <p> 好房网集房源信息搜索、产品研发、大数据处理、服务标准建立为一体的以数据驱动的全价值链房产服务平台。好房网的前身为好房在线，成立于2010年并于2014年正式更名为好房网。目前，好房网线上房源已覆盖北京、上海、广州、深圳、天津、成都、青岛、重庆、大连等36个地区。在房产交易服务领域，好房网旨在通过“链接人与服务”不断提高服务效率、提升服务体验，为用户提供更安全、更便捷、更舒心的综合房产服务，致力于实现推动行业进步，让房屋交易不再难的企业愿景。
+                                <p>
                                 </p>
                                 <hr>
                             </article>
@@ -42,10 +42,9 @@
                                 <h3>联系方式</h3>
                                 <address>
                                     <strong>公司地址</strong><br>
-                                    北京西直门<br>
-                                    奋斗大厦B座3层
+                                    <br>
                                 </address>
-                                010-87111111<br>
+                                010-<br>
                                 <a href="#">hello@example.com</a>
                             </article>
                         </div><!-- /.col-sm-3 -->
@@ -53,7 +52,7 @@
                             <article>
                                 <h3>常用链接</h3>
                                 <ul class="list-unstyled list-links">
-                                    <li><a href="/index">搜索房产</a></li>
+                                    <li><a href="/index">首页</a></li>
                                     <li><a href="/accounts/register">登录/注册</a></li>
                                     <li><a href="/blog/list">博客</a></li>
                                 </ul>
@@ -110,7 +109,7 @@
 
 <#macro hot>
 <aside id="featured-properties">
-    <header><h3>热门房产</h3></header>
+    <header><h3>热门</h3></header>
     <#list recomHouses as house>
     <div class="property small">
         <a href="/house/detail?id=${house.id}">
@@ -134,13 +133,13 @@
     <form role="form" id="_searchForm" class="form-search" method="post" action="/house/list">
 
         <div class="form-group">
-            <input type="text" class="form-control" id="search-box-property-id" value="${(vo.name)!}" name="name" placeholder="尝试输入小区名">
+            <input type="text" class="form-control" id="search-box-property-id" value="${(vo.name)!}" name="name" placeholder="尝试输入关键字">
         </div>
         <div class="form-group">
             <select name="type">
                 <option value="1" >类型</option>
-                <option value="1" <#if (vo.type)?? && (vo.type)==1> selected </#if> >售卖</option>
-                <option value="2" <#if (vo.type)?? && (vo.type)==2> selected </#if> >出租</option>
+                <option value="1" <#if (vo.type)?? && (vo.type)==1> selected </#if> >1</option>
+                <option value="2" <#if (vo.type)?? && (vo.type)==2> selected </#if> >2</option>
             </select>
         </div><!-- /.form-group -->
         <input type="text" value="${(vo.sort)!}" name=sort hidden="true">
@@ -165,7 +164,7 @@
                     <#if (loginUser.name)??>
                         <a href="/accounts/profile" class="promoted">Hello,${(loginUser.name)!}</a>
                           <#if (loginUser.email)?? && (loginUser.email) == "spring_boot@163.com">
-                          <a href="/agency/create" class="promoted">创建经纪机构</a>
+                          <a href="/agency/create" class="promoted">创建</a>
                           </#if>
                         <a href="/accounts/logout" class="promoted">退出</a>
                     <#else>
@@ -197,16 +196,16 @@
                 <nav class="collapse navbar-collapse bs-navbar-collapse navbar-right" role="navigation">
                     <ul class="nav navbar-nav">
                         <li><a href="/index">首页</a></li>
-                        <li class="has-child"><a href="/house/list">房产</a>
+                        <li class="has-child"><a href="/house/list">列表</a>
                             <ul class="child-navigation">
-                                <li><a href="/house/list?type=1">售房</a></li>
-                                <li><a href="/house/list?type=2">租房</a></li>
+                                <li><a href="/house/list?type=1">1</a></li>
+                                <li><a href="/house/list?type=2">2</a></li>
                             </ul>
                         </li>
-                        <li class="has-child"><a href="#">经纪人</a>
+                        <li class="has-child"><a href="#">子列表</a>
                             <ul class="child-navigation">
-                                <li><a href="/agency/agentList">经纪人列表</a></li>
-                                <li><a href="/agency/list">经纪机构列表</a></li>
+                                <li><a href="/agency/agentList">列表1</a></li>
+                                <li><a href="/agency/list">列表2</a></li>
                             </ul>
                         </li>
                         <li><a href="/blog/list">百科</a></li>
